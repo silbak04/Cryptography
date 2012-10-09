@@ -2,14 +2,20 @@
 # Cryptography 1
 
 import gmpy2
+import math
 
 def safe_prime(exponent, count):
     for k in range(0,10000000):
         p = 10**exponent + k 
-        safe_p = 0.5*(p-1)
+
+        # checks to see if p is prime
         a = gmpy2.powmod(2, p-1, p)
 
         if (a == 1): 
+            # since p is prime, check to see if
+            # p is a safe prime
+            safe_p = 0.5*(p-2)
+
             if (gmpy2.is_prime(int(safe_p))): 
                 count += 1
                 if count == 1: 
@@ -19,10 +25,15 @@ def safe_prime(exponent, count):
 def twin_prime(exponent, count):
     for k in range(0,10000000):
         p = 10**exponent + k 
-        twin_p = p + 2
+
+        # checks to see if p is prime
         a = gmpy2.powmod(2, p-1, p)
 
         if (a == 1): 
+            # since p is prime, check to see if
+            # p is a twin prime
+            twin_p = p + 2
+
             if (gmpy2.is_prime(twin_p)): 
                 count += 1
                 if count == 1: 

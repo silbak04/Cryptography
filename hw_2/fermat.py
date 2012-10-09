@@ -1,3 +1,6 @@
+# Samir Silbak
+# Cryptography 1
+
 import gmpy2
 
 def is_prime(exponent, count):
@@ -37,5 +40,4 @@ is_prime(25,0)
 is_prime(50,0)
 
 square_roots(5739,100003)
-
 probable_prime(16157879263,0)

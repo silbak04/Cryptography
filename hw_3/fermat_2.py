@@ -1,3 +1,6 @@
+# Samir Silbak
+# Cryptography 1
+
 import gmpy2
 
 def safe_prime(exponent, count):
@@ -49,7 +52,8 @@ def is_prime(r, count):
                     print "k = %i \nprime = %i\n" % (k, p)
                 return
 
-safe_prime(30, 0)
-twin_prime(30, 0)
-probable_prime(299, 0)
-is_prime(4757465356727831999004128791705437327848295392355362834943053456110093459345837361621774882384242053, 0)
+safe_prime(30,0)
+twin_prime(30,0)
+
+probable_prime(299,0)
+is_prime(4757465356727831999004128791705437327848295392355362834943053456110093459345837361621774882384242053,0)

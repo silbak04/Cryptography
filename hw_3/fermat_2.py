@@ -21,7 +21,7 @@ def twin_prime(exponent, count):
 
         if (a == 1): 
             if (gmpy2.is_prime(twin_prime)): 
-                count = count + 1
+                count += 1
                 if count == 1: 
                     print "k = %i \ntwin prime = %i\n" % (k, twin_prime)
                 return
@@ -32,7 +32,7 @@ def probable_prime(exponent, count):
         a = gmpy2.powmod(2, p-1, p)
 
         if (a == 1): 
-            count = count + 1
+            count += 1
             if count == 1: 
                 print "k = %i \nprobable prime = %i\n" % (k, p)
             return
@@ -44,7 +44,7 @@ def is_prime(r, count):
 
         if (a == 1): 
             if (gmpy2.is_prime(k)): 
-                count = count + 1
+                count += 1
                 if count == 1: 
                     print "k = %i \nprime = %i\n" % (k, p)
                 return

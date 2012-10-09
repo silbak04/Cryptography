@@ -2,7 +2,6 @@
 # Cryptography 1
 
 import gmpy2
-import math
 
 def safe_prime(exponent):
     for k in range(0,10000000):

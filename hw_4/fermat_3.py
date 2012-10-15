@@ -18,15 +18,13 @@ def safe_prime(exponent):
 
             if (gmpy2.is_prime(int(safe_p))): 
                 print "k = %i \nsafe prime = %i\n" % (k, safe_p)
-                return 
+                return safe_p
 
 def prim_root():
-    #safe_prime(100)
+    p = safe_prime(100)
     base = (2,3,5,7,9,11,13)
     for k in base:
         #print "base = ", k
-
-        p = 5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000021861
 
         # checks to see if p is prime
         a = gmpy2.powmod(k, gmpy2.c_div(gmpy2.sub(p,1), 2), p)
@@ -42,10 +40,8 @@ def prim_root():
 
 #def factor_prime(prime):
 
-#print "-"*80
-#safe_prime(100)
-#print "-"*80
+print "-"*80
 prim_root()
-#print "-"*80
+print "-"*80
 #factor_prime(190248273382547686244479775579416295505415044511)
 #print "-"*80

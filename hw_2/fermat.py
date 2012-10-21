@@ -3,15 +3,13 @@
 
 import gmpy2
 
-def is_prime(exponent, count):
+def is_prime(exponent):
     for k in range(0,10000000):
         p = 10**exponent + k
         a = gmpy2.powmod(2, p-1, p)
 
         if (a == 1): 
-            count += 1
-            if count == 1: 
-                print "k = ", k
+            print "k = ", k
             return
 
 def square_roots(base, prime):
@@ -35,9 +33,9 @@ def probable_prime(prime, count):
             if count == 4: 
                 return
 
-is_prime(10,0)
-is_prime(25,0)
-is_prime(50,0)
+is_prime(10)
+is_prime(25)
+is_prime(50)
 
 square_roots(5739,100003)
 probable_prime(16157879263,0)

@@ -22,8 +22,9 @@ def linear_cong_rng():
     u_1 = abs(gmpy2.mul(t_3, t_1) - gmpy2.square(t_2))
 
     gcd = gmpy2.gcd(u_0, u_1)
+    M = gcd/6.0
 
-    print "t[0] = %i\nt[1] = %i\nt[2] = %i\nt[3] = %i\n\nu[0] = %i\nu[1] = %i\n\ngcd(u[0], u[1]) = %i\n" %(t_0, t_1, t_2, t_3, u_0, u_1, gcd)
+    print "t[0] = %i\nt[1] = %i\nt[2] = %i\nt[3] = %i\n\nu[0] = %i\nu[1] = %i\n\nM' = gcd(u[0], u[1]) = %i\nM = %i\n" %(t_0, t_1, t_2, t_3, u_0, u_1, gcd, M)
 
     return
 

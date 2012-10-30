@@ -47,10 +47,14 @@ def linear_cong_rng():
     # B * t[0] = (x[1]^2 - x[0]) mod M
 
     # used Diophantine equations to retrieve A and B
+    # using M = M'/6
+    #A = 184643116198852796934
+    #B = 166536178911507583114
+    # using M
     A = 12630192673789351314
     B = 71501923691929981066
 
-    #check_a = gmpy2.f_mod(gmpy2.mul(A, t[0]), gcd)
+    #check_a = gmpy2.f_mod(gmpy2.mul(A, t[0]), M)
     #x_diffe = gmpy2.sub(gmpy2.square(x[1]), gmpy2.mul(x[0], x[1]))
 
     #print "check_a = ", check_a
@@ -71,7 +75,7 @@ def linear_cong_rng():
     #print "x[7] = ", x[7]
     #print "x[8] = ", x[8]
     #print "x[9] = ", x[9]
-    #print "x[10] = ", x[10]
+    print "x[10] = ", x[10]
     print "x[11] = ", x[11]
 
     print "A     = ", A
@@ -95,6 +99,25 @@ def safe_prime(exponent):
                 print "\nk = %i \nsafe prime = %i\n" % (k, safe_p)
                 return
 
+def diophantine(a, b, c):
+    q,r = gmpy2.f_divmod(a, b)
+
+    if (r == 0):
+        print "remainder = ", gmpy2.div(c, b)
+        return([0, gmpy2.div(c, b)])
+
+    else:
+        sol = diophantine(b, r, c)
+        x = sol[1]
+        y = sol[0]
+
+        print "x = ", x
+        print "y = ", y
+
+        return ([x, gmpy2.sub(y, gmpy2.mul(x, q))])
+
 linear_cong_rng()
 print "-"*80
 safe_prime(150)
+#print "-"*80
+#diophantine(14814869576456430533,95034255219577602048,-70339372134242828130)

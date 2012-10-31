@@ -27,9 +27,8 @@ def linear_cong_rng():
     # M'
     gcd = gmpy2.gcd(u[0], u[1])
 
-    # true M = M'/6 since gcd(t[0], M) = 1
-    #M = gmpy2.mpz(gmpy2.div(gcd, 6.0))
-    M = gcd
+    # true M = M'/2 
+    M = gmpy2.mpz(gmpy2.div(gcd, 2))
 
     # x[2] = A * x[1] + B (mod M)
     # x[1] = A * x[0] + B (mod M)
@@ -42,25 +41,24 @@ def linear_cong_rng():
     # -x[0] * x[2] = -A * x[0] * x[1] - B * x[0] (mod M)
     #  x[1] * x[1] =  A * x[0] * x[1] + B * x[1] (mod M)
     # --------------------------------------------------
-    # x[1]^2 - (x[0] * x[1]) = B (x[1] - x[0]) mod M
+    # x[1]^2 - (x[0] * x[2]) = B (x[1] - x[0]) mod M
 
-    # B * t[0] = (x[1]^2 - x[0]) mod M
+    # B * t[0] = (x[1]^2 - (x[0] * x[2])) mod M
+
+    # easier way to solve B:
+    # find A first
+    # (A * x[0] + B) = x[1] mod M
 
     # used Diophantine equations to retrieve A and B
-    # using M = M'/6
-    #A = 184643116198852796934
-    #B = 166536178911507583114
     # using M
+    #A = 12630192673789351314
+    #B = 35234390061212433526
+
+    # using M = M'/2 or M'/3
     A = 12630192673789351314
-    B = 71501923691929981066
+    B = 35234390061212433526
 
-    #check_a = gmpy2.f_mod(gmpy2.mul(A, t[0]), M)
-    #x_diffe = gmpy2.sub(gmpy2.square(x[1]), gmpy2.mul(x[0], x[1]))
-
-    #print "check_a = ", check_a
-    #print "x_diffe = ", x_diffe
-
-    print "t[0] = %i\nt[1] = %i\nt[2] = %i\nt[3] = %i\n\nu[0] = %i\nu[1] = %i\n\nM = gcd(u[0], u[1]) = %i\n" %(t[0], t[1], t[2], t[3], u[0], u[1], M)
+    print "t[0] = %i\nt[1] = %i\nt[2] = %i\nt[3] = %i\n\nu[0] = %i\nu[1] = %i\n\nM' = gcd(u[0], u[1]) = %i\nM = M'/2 = %i\n" %(t[0], t[1], t[2], t[3], u[0], u[1], gcd, M)
 
     x[5]  = gmpy2.mpz(gmpy2.f_mod(gmpy2.add(gmpy2.mul(A,  x[4]), gmpy2.mpz(B)), gmpy2.mpz(M)))
     x[6]  = gmpy2.mpz(gmpy2.f_mod(gmpy2.add(gmpy2.mul(A,  x[5]), gmpy2.mpz(B)), gmpy2.mpz(M)))
@@ -83,22 +81,6 @@ def linear_cong_rng():
 
     return 
 
-def safe_prime(exponent):
-    for k in range(0,10000000):
-        p = 10**exponent + k
-
-        # checks to see if p is prime
-        a = gmpy2.powmod(2, p-1, p)
-
-        if (a == 1):
-            # since p is prime, check to see if
-            # p is a safe prime
-            safe_p = gmpy2.c_div(gmpy2.sub(p,1),2)
-
-            if (gmpy2.is_prime(int(safe_p))):
-                print "\nk = %i \nsafe prime = %i\n" % (k, safe_p)
-                return
-
 def diophantine(a, b, c):
     q,r = gmpy2.f_divmod(a, b)
 
@@ -116,8 +98,22 @@ def diophantine(a, b, c):
 
         return ([x, gmpy2.sub(y, gmpy2.mul(x, q))])
 
+def safe_prime(exponent):
+    for k in range(0,10000000):
+        p = 10**exponent + k
+
+        # checks to see if p is prime
+        a = gmpy2.powmod(2, p-1, p)
+
+        if (a == 1):
+            # since p is prime, check to see if
+            # p is a safe prime
+            safe_p = gmpy2.c_div(gmpy2.sub(p,1),2)
+
+            if (gmpy2.is_prime(int(safe_p))):
+                print "\nk = %i \nsafe prime = %i\n" % (k, safe_p)
+                return
+
 linear_cong_rng()
 print "-"*80
 safe_prime(150)
-#print "-"*80
-#diophantine(14814869576456430533,95034255219577602048,-70339372134242828130)

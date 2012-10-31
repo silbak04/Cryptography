@@ -17,3 +17,35 @@ B     =  35234390061212433526
 
 k = 20407 
 safe prime = 500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010203
+
+         20646 function calls in 4.742 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        5    0.000    0.000    0.000    0.000 copy_reg.py:14(pickle)
+        1    0.273    0.273    4.740    4.740 linear_cong_rng.py:101(safe_prime)
+        1    0.000    0.000    0.000    0.000 linear_cong_rng.py:11(linear_cong_rng)
+        1    0.002    0.002    4.742    4.742 linear_cong_rng.py:5(<module>)
+        2    0.000    0.000    0.000    0.000 {abs}
+        7    0.000    0.000    0.000    0.000 {gmpy2.add}
+       54    0.000    0.000    0.000    0.000 {gmpy2.c_div}
+        1    0.000    0.000    0.000    0.000 {gmpy2.div}
+        7    0.000    0.000    0.000    0.000 {gmpy2.f_mod}
+        1    0.000    0.000    0.000    0.000 {gmpy2.gcd}
+       54    0.006    0.000    0.006    0.000 {gmpy2.is_prime}
+        1    0.000    0.000    0.000    0.000 {gmpy2.mpc}
+        1    0.000    0.000    0.000    0.000 {gmpy2.mpfr}
+        1    0.000    0.000    0.000    0.000 {gmpy2.mpq}
+       23    0.000    0.000    0.000    0.000 {gmpy2.mpz}
+        9    0.000    0.000    0.000    0.000 {gmpy2.mul}
+    20408    4.106    0.000    4.106    0.000 {gmpy2.powmod}
+        2    0.000    0.000    0.000    0.000 {gmpy2.square}
+       58    0.000    0.000    0.000    0.000 {gmpy2.sub}
+        1    0.000    0.000    0.000    0.000 {gmpy2.xmpz}
+        5    0.000    0.000    0.000    0.000 {hasattr}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.355    0.355    0.355    0.355 {range}
+
+
